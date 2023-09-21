@@ -1,0 +1,124 @@
+.input-block {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: center;
+    gap: rem(10);
+    input {
+        padding: rem(7) rem(15);
+    }
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: rem(10);
+
+    &__inputs {
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(rem(300), 1fr));
+        align-items: center;
+        justify-content: center;
+        gap: rem(10);
+    }
+}
+
+.button {
+    border: rem(2) solid white;
+    padding: rem(7) rem(15);
+    height: 100%;
+    transition: all 0.3s ease 0s;
+    &:hover {
+        background-color: rgb(111, 213, 52);
+    }
+    &-delete {
+        &:hover {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+    }
+}
+
+.uploader-images {
+    flex: 0 1 rem(650);
+
+    #img {
+        display: none;
+    }
+}
+
+.uploader-lable {
+    display: block;
+    border: rem(2) solid white;
+    font-size: rem(90);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem(10);
+    height: rem(200);
+    transition: all 0.3s ease 0s;
+    &:hover {
+        background-color: rgb(111, 213, 52);
+        cursor: pointer;
+    }
+}
+
+.uploader-title {
+    margin-bottom: rem(10);
+}
+
+.uploader-files {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(rem(150), 1fr));
+    gap: rem(5);
+    img {
+        width: 100%;
+        object-fit: cover;
+        height: rem(200);
+    }
+}
+
+.upload-img {
+    position: relative;
+    cursor: pointer;
+    &::before {
+        content: "Delete";
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition: all 0.3s ease 0s;
+        background-color: rgba(255, 0, 0, 0.8);
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+
+.error-message {
+    margin-top: rem(15);
+    font-size: rem(25);
+    color: red;
+}
+
+.small-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: rem(20);
+    article {
+        height: min-content;
+        transition: all 0.3s ease 0s;
+        &:hover {
+            box-shadow: rem(0) rem(0) rem(7) rem(2) rgba(255, 255, 255, 0.5);
+        }
+    }
+}

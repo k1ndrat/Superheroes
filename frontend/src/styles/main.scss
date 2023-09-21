@@ -1,0 +1,221 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    // overflow-y: hidden;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    &__container {
+        flex-grow: 1;
+        width: 100%;
+        @include adaptiveValue("padding-top", 50, 20);
+        @include adaptiveValue("padding-bottom", 50, 20);
+        display: flex;
+        gap: rem(20);
+        @media (max-width: $mobile) {
+            flex-direction: column;
+        }
+    }
+
+    &__hero {
+        padding: rem(20);
+        border: rem(2) white solid;
+    }
+
+    &__loader-wrap {
+        width: 100%;
+        height: rem(200);
+        position: relative;
+    }
+
+    &__loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: rem(80);
+        width: rem(80);
+        transform: translate(-50%, -50%);
+        transform-origin: center;
+        animation: loading 1s linear infinite;
+        &.loader-inner {
+            animation-direction: reverse;
+            height: rem(50);
+            width: rem(50);
+            &::after,
+            &::before {
+                border-width: rem(5);
+            }
+        }
+        &::after,
+        &::before {
+            content: "";
+            position: absolute;
+            height: 50%;
+            border-width: rem(4);
+            border-style: solid;
+            width: 100%;
+            background-color: transparent;
+        }
+        &::after {
+            top: 0;
+            left: 0;
+            border-color: royalblue;
+            border-bottom: none;
+            border-radius: rem(50) rem(50) 0 0;
+        }
+        &::before {
+            bottom: 0;
+            border-color: $yellow;
+            border-top: none;
+            border-radius: 0 0 rem(50) rem(50);
+        }
+    }
+
+    @keyframes loading {
+        from {
+            transform: translate(-50%, -50%) rotateZ(0deg);
+        }
+        to {
+            transform: translate(-50%, -50%) rotateZ(360deg);
+        }
+    }
+}
+
+.hero {
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(15);
+    }
+
+    &__img {
+        width: 100%;
+        object-fit: cover;
+        height: rem(300);
+    }
+
+    &__name {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.main .swiper {
+    &-wrapper {
+        height: auto !important;
+    }
+
+    &-slide {
+        height: auto !important;
+    }
+
+    .swiper-pagination {
+        display: flex;
+        // flex-wrap: wrap;
+        padding: rem(0) rem(20);
+        gap: rem(5);
+        justify-content: center;
+        transition: all 0.3s ease 0s;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: relative;
+        margin-top: rem(50);
+        @media (max-width: $mobile) {
+            justify-content: space-evenly;
+        }
+        &-bullet {
+            // height: 100%;
+            height: rem(7);
+            width: rem(40);
+            border-radius: rem(5);
+            transition: all 0.3s ease 0s;
+            background-color: white;
+            opacity: 0.2;
+            margin: 0 !important;
+            &:hover {
+                opacity: 0.5;
+            }
+            &-active {
+                background-color: $yellow;
+                opacity: 1 !important;
+            }
+
+            @media (max-width: $mobile) {
+                height: rem(7);
+                width: rem(7);
+            }
+        }
+    }
+}
+
+//========================================================================================================================================================
+
+.post-page {
+    &__container {
+        padding-top: rem(35);
+        padding-bottom: rem(35);
+    }
+
+    &__title {
+        font-size: rem(32);
+        margin-bottom: rem(20);
+    }
+}
+
+.edit-page {
+    &__container {
+        padding-top: rem(35);
+        padding-bottom: rem(35);
+    }
+    &__title {
+        font-size: rem(32);
+        margin-bottom: rem(20);
+    }
+}
+
+.hero-page {
+    &__container {
+        padding-top: rem(35);
+        padding-bottom: rem(35);
+    }
+    &__title {
+        font-size: rem(32);
+        margin-bottom: rem(20);
+    }
+
+    &__content {
+        display: flex;
+        gap: rem(20);
+    }
+    &__images {
+        flex: 0 1 rem(650);
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(rem(150), 1fr));
+        gap: rem(5);
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: rem(200);
+        }
+    }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: rem(10);
+        font-size: rem(20);
+    }
+
+    &__actives {
+        display: flex;
+        gap: rem(20);
+    }
+}
